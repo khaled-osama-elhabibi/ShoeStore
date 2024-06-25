@@ -24,8 +24,12 @@ class ListingFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        navController = NavHostFragment.findNavController(this)
+
         val binding = DataBindingUtil.inflate<FragmentListingBinding>(inflater,R.layout.fragment_listing,container,false)
-         navController = NavHostFragment.findNavController(this)
+        binding.moreDetailsButton.setOnClickListener {
+            navController.navigate(ListingFragmentDirections.actionListingFragmentToDetailsFragment())
+        }
 
         return binding.root
     }
@@ -54,12 +58,10 @@ class ListingFragment: Fragment() {
     private fun logOut ( ){
         val sharedPreferences = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences!!.edit()
-        editor.remove("email",)
+        editor.remove("email")
         editor.remove("password")
         editor.apply()
         navController.navigate(ListingFragmentDirections.actionListingFragmentToLoginFragment())
 
     }
-
-
 }

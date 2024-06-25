@@ -19,8 +19,7 @@
         android:label="OnBoardingFragment" >
         <action
             android:id="@+id/action_onBoardingFragment_to_instructionFragment"
-            app:destination="@id/instructionFragment"
-            app:popUpTo="@id/nav_graph" />
+            app:destination="@id/instructionFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
