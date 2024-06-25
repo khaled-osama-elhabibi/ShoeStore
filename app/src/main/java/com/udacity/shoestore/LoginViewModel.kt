@@ -15,8 +15,8 @@ class LoginViewModel: ViewModel() {
         get() = _password
 
    init {
-       _email.value = "khaled@osama"
-       _password.value = "222222"
+       _email.value = ""
+       _password.value = ""
    }
 
     fun changePassword(text: String) {

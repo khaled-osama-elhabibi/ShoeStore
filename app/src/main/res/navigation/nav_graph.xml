@@ -10,10 +10,35 @@
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_onBoardingFragment"
-            app:destination="@id/onBoardingFragment" />
+            app:destination="@id/onBoardingFragment"
+            app:popUpTo="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.udacity.shoestore.OnBoardingFragment"
-        android:label="OnBoardingFragment" />
+        android:label="OnBoardingFragment" >
+        <action
+            android:id="@+id/action_onBoardingFragment_to_instructionFragment"
+            app:destination="@id/instructionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.udacity.shoestore.DetailsFragment"
+        android:label="DetailsFragment" />
+    <fragment
+        android:id="@+id/listingFragment"
+        android:name="com.udacity.shoestore.ListingFragment"
+        android:label="ListingFragment" >
+        <action
+            android:id="@+id/action_listingFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructionFragment"
+        android:name="com.udacity.shoestore.InstructionFragment"
+        android:label="InstructionFragment" >
+        <action
+            android:id="@+id/action_instructionFragment_to_listingFragment"
+            app:destination="@id/listingFragment" />
+    </fragment>
 </navigation>
