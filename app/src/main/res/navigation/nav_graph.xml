@@ -19,7 +19,8 @@
         android:label="OnBoardingFragment" >
         <action
             android:id="@+id/action_onBoardingFragment_to_instructionFragment"
-            app:destination="@id/instructionFragment" />
+            app:destination="@id/instructionFragment"
+            app:popUpTo="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -32,6 +33,10 @@
         <action
             android:id="@+id/action_listingFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_listingFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/instructionFragment"
@@ -39,6 +44,7 @@
         android:label="InstructionFragment" >
         <action
             android:id="@+id/action_instructionFragment_to_listingFragment"
-            app:destination="@id/listingFragment" />
+            app:destination="@id/listingFragment"
+            app:popUpTo="@id/nav_graph" />
     </fragment>
 </navigation>

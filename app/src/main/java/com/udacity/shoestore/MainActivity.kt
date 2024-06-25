@@ -4,24 +4,31 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import timber.log.Timber
+import androidx.navigation.NavController
+import androidx.navigation.ui.NavigationUI
 
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var navController : NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Timber.plant(Timber.DebugTree())
+        navController = findNavController(R.id.nav_host_fragment)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         val email = readFromSharedPreferences(this, "email")
         val password = readFromSharedPreferences(this, "password")
 
+
         Log.i("EMAIL ==>",email.toString())
         Log.i("PASSWORD ==>",password.toString())
 
-        val navController = findNavController(R.id.nav_host_fragment)
         if (email !== null && password !== null) {
             val navOptions = NavOptions.Builder()
                 .setPopUpTo(navController.graph.startDestinationId, inclusive = true)
