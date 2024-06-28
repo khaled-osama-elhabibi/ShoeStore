@@ -11,6 +11,7 @@
         <action
             android:id="@+id/action_loginFragment_to_onBoardingFragment"
             app:destination="@id/onBoardingFragment"
+            app:enterAnim="@anim/slide_in"
             app:popUpTo="@id/nav_graph" />
     </fragment>
     <fragment
@@ -19,7 +20,8 @@
         android:label="OnBoardingFragment" >
         <action
             android:id="@+id/action_onBoardingFragment_to_instructionFragment"
-            app:destination="@id/instructionFragment" />
+            app:destination="@id/instructionFragment"
+            app:enterAnim="@anim/slide_in" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -31,10 +33,12 @@
         android:label="ListingFragment" >
         <action
             android:id="@+id/action_listingFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in" />
         <action
             android:id="@+id/action_listingFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_out"
             app:popUpTo="@id/nav_graph" />
     </fragment>
     <fragment
@@ -44,6 +48,7 @@
         <action
             android:id="@+id/action_instructionFragment_to_listingFragment"
             app:destination="@id/listingFragment"
+            app:enterAnim="@anim/slide_in"
             app:popUpTo="@id/nav_graph" />
     </fragment>
 </navigation>
