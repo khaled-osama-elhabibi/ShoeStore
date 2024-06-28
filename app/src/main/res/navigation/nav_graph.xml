@@ -27,18 +27,10 @@
         android:id="@+id/detailsFragment"
         android:name="com.udacity.shoestore.DetailsFragment"
         android:label="DetailsFragment" >
-        <argument
-            android:name="shoeName"
-            app:argType="string" />
-        <argument
-            android:name="shoeSize"
-            app:argType="string" />
-        <argument
-            android:name="company"
-            app:argType="string" />
-        <argument
-            android:name="description"
-            app:argType="string" />
+        <action
+            android:id="@+id/action_detailsFragment_to_listingFragment"
+            app:destination="@id/listingFragment"
+            app:enterAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/listingFragment"

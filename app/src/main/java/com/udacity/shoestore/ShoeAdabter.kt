@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.udacity.shoestore.databinding.ShowItemBinding
 import com.udacity.shoestore.models.Shoe
 
-class ShoeAdapter(private val shoeList: MutableList<Shoe>, private val navController: NavController) : RecyclerView.Adapter<ShoeAdapter.ShoeViewHolder>() {
+class ShoeAdapter(private val shoeList: MutableList<Shoe>) : RecyclerView.Adapter<ShoeAdapter.ShoeViewHolder>() {
 
     class ShoeViewHolder(val binding: ShowItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -23,10 +23,6 @@ class ShoeAdapter(private val shoeList: MutableList<Shoe>, private val navContro
     override fun onBindViewHolder(holder: ShoeViewHolder, position: Int) {
         val shoe = shoeList[position]
         holder.binding.shoe = shoe
-        holder.binding.goToButton.setOnClickListener {
-            val action = ListingFragmentDirections.actionListingFragmentToDetailsFragment(shoe.name,shoe.size.toString(),shoe.company,shoe.description)
-            navController.navigate(action)
-        }
         holder.binding.executePendingBindings()
     }
 

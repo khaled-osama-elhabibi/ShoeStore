@@ -1,5 +1,6 @@
 package com.udacity.shoestore
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,5 +19,17 @@ class ListingViewModel: ViewModel() {
             Shoe("Original",45.00,"Zara","One of the best in the world"),
             Shoe("Original",41.00,"Zara","One of the best in the world"),
         )
+    }
+    fun addShoe(shoe: Shoe) {
+        _shoeList.value?.let {
+            val updatedList = it.toMutableList()
+            updatedList.add(shoe)
+            _shoeList.value = updatedList
+        }
+    }
+
+
+    override fun onCleared() {
+        super.onCleared()
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
@@ -24,10 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val email = readFromSharedPreferences(this, "email")
         val password = readFromSharedPreferences(this, "password")
-
-
-        Log.i("EMAIL ==>",email.toString())
-        Log.i("PASSWORD ==>",password.toString())
+        val viewModel: ListingViewModel by viewModels()
 
         if (email !== null && password !== null) {
             val navOptions = NavOptions.Builder()
