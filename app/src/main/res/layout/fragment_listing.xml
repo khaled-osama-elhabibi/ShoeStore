@@ -63,3 +63,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
+    <!--
+    Here I used ConstraintLayout because it's a bit complex layout with multiple tags
+    Also it's expected to add more elements at this layout
+    -->
