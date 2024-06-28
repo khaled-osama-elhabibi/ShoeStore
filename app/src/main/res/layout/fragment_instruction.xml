@@ -44,3 +44,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
+<!--
+    As it's expected to add more elements at this layout
+-->

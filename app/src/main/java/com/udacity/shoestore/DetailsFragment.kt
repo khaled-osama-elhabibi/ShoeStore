@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.udacity.shoestore.databinding.FragmentDetailsBinding
@@ -76,7 +75,7 @@ class DetailsFragment: Fragment() {
             val newShoe = Shoe(
                 shoeNameInput.text.toString(),
                 shoeSizeInput.text.toString().toDouble(),
-                shoeDescriptionTextView.text.toString(),
+                descriptionInputEditText.text.toString(),
                 companyInputEditText.text.toString(),
             )
             detailsViewModel.addShoe(newShoe)

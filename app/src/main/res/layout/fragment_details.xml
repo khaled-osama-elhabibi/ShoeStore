@@ -72,6 +72,7 @@
             android:layout_marginStart="@dimen/margin_horizontal"
             android:layout_marginEnd="@dimen/margin_horizontal"
             android:hint="@{shoe.name}"
+            android:text="@={shoe.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -108,6 +109,7 @@
             android:id="@+id/companyInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@={shoe.company}"
             android:layout_marginStart="@dimen/margin_horizontal"
             android:layout_marginEnd="@dimen/margin_horizontal"
             app:layout_constraintTop_toBottomOf="@+id/textView12"
@@ -128,6 +130,7 @@
             app:layout_constraintTop_toBottomOf="@+id/companyInputEditText" />
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/descriptionInputEditText"
+            android:text="@={shoe.description}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_horizontal"
@@ -150,6 +153,7 @@
 
         <EditText
             android:id="@+id/shoeSizeInput"
+            android:text="@={shoe.size}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_horizontal"
@@ -163,3 +167,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
+    <!--
+    Here I used ConstraintLayout because it's a bit complex layout with multiple tags
+    Also it's expected to add more elements at this layout
+    -->
