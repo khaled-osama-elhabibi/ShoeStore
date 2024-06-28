@@ -13,30 +13,30 @@ import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.udacity.shoestore.databinding.FragmentListingBinding
 
 class ListingFragment: Fragment() {
+    private lateinit var listingViewModel :ListingViewModel
+    private lateinit var listingBinding :FragmentListingBinding
     private lateinit var navController :NavController
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         navController = NavHostFragment.findNavController(this)
-
-        val binding = DataBindingUtil.inflate<FragmentListingBinding>(inflater,R.layout.fragment_listing,container,false)
-        binding.moreDetailsButton.setOnClickListener {
-            navController.navigate(ListingFragmentDirections.actionListingFragmentToDetailsFragment())
-        }
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        listingBinding = DataBindingUtil.inflate<FragmentListingBinding>(inflater,R.layout.fragment_listing,container,false)
+        listingViewModel = ViewModelProvider(this).get(ListingViewModel::class.java)
         val menuHost: MenuHost = requireActivity()
+
+
+        listingBinding.shoeItemsRecycleView.layoutManager = LinearLayoutManager(context)
+        listingBinding.shoeItemsRecycleView.adapter = ShoeAdapter(listingViewModel.shoeList.value!!,navController)
 
         menuHost.addMenuProvider(object: MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -53,15 +53,16 @@ class ListingFragment: Fragment() {
                 }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        return listingBinding.root
     }
 
-    private fun logOut ( ){
+    private fun logOut () {
         val sharedPreferences = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences!!.edit()
         editor.remove("email")
         editor.remove("password")
         editor.apply()
         navController.navigate(ListingFragmentDirections.actionListingFragmentToLoginFragment())
-
     }
 }
