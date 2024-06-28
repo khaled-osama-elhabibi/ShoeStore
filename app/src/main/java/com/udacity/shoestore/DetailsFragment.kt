@@ -22,7 +22,7 @@ class DetailsFragment: Fragment() {
     ): View? {
         navController = NavHostFragment.findNavController(this)
         var args = DetailsFragmentArgs.fromBundle(arguments)
-        
+
         val binding = DataBindingUtil.inflate<FragmentDetailsBinding>(
             inflater,
             R.layout.fragment_details,
