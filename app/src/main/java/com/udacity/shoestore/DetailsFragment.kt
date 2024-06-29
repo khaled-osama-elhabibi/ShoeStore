@@ -24,12 +24,14 @@ class DetailsFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        detailsViewModel = ViewModelProvider(this).get(ListingViewModel::class.java)
         navController = NavHostFragment.findNavController(this)
         binding = DataBindingUtil.inflate<FragmentDetailsBinding>(
             inflater,
             R.layout.fragment_details,
             container,false)
+        binding.shoe = detailsViewModel
+        binding.lifecycleOwner = this
+
 
         val menuHost: MenuHost = requireActivity()
 
@@ -71,17 +73,9 @@ class DetailsFragment: Fragment() {
         navController.navigateUp()
     }
     private fun saveNewShoeItem(){
-        binding.apply {
-            val newShoe = Shoe(
-                shoeNameInput.text.toString(),
-                shoeSizeInput.text.toString().toDouble(),
-                descriptionInputEditText.text.toString(),
-                companyInputEditText.text.toString(),
-            )
-            detailsViewModel.addShoe(newShoe)
-            val action = DetailsFragmentDirections.actionDetailsFragmentToListingFragment()
-            navController.navigate(action)
-        }
+        detailsViewModel.addShoe()
+        val action = DetailsFragmentDirections.actionDetailsFragmentToListingFragment()
+        navController.navigate(action)
     }
 
 }

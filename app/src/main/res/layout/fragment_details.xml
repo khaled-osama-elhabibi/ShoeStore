@@ -5,7 +5,7 @@
     <data>
         <variable
             name="shoe"
-            type="com.udacity.shoestore.models.Shoe" />
+            type="com.udacity.shoestore.ListingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,8 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_horizontal"
             android:layout_marginEnd="@dimen/margin_horizontal"
-            android:hint="@{shoe.name}"
-            android:text="@={shoe.name}"
+            android:text="@={shoe.newShoe.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -109,7 +108,7 @@
             android:id="@+id/companyInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={shoe.company}"
+            android:text="@={shoe.newShoe.company}"
             android:layout_marginStart="@dimen/margin_horizontal"
             android:layout_marginEnd="@dimen/margin_horizontal"
             app:layout_constraintTop_toBottomOf="@+id/textView12"
@@ -130,7 +129,7 @@
             app:layout_constraintTop_toBottomOf="@+id/companyInputEditText" />
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/descriptionInputEditText"
-            android:text="@={shoe.description}"
+            android:text="@={shoe.newShoe.description}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_horizontal"
@@ -153,7 +152,7 @@
 
         <EditText
             android:id="@+id/shoeSizeInput"
-            android:text="@={shoe.size}"
+            android:text="@={shoe.newShoe.size}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_horizontal"

@@ -12,21 +12,17 @@ import androidx.navigation.fragment.NavHostFragment
 import com.udacity.shoestore.databinding.FragmentLoginBinding
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 
 class LoginFragment : Fragment() {
-    private lateinit var gameViewModel :LoginViewModel
+    private lateinit var loginViewModel :LoginViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater,R.layout.fragment_login,container, false)
-        gameViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
-        binding.passwordTextInput.addTextChangedListener {
-            gameViewModel.changePassword(it.toString())
-        }
-        binding.emailTextInput.addTextChangedListener {
-            gameViewModel.changeEmail(it.toString())
-        }
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        binding.viewModel = loginViewModel
+        binding.lifecycleOwner = this
 
         binding.logInButton.setOnClickListener {
             login()
@@ -37,8 +33,8 @@ class LoginFragment : Fragment() {
     private fun login() {
         val sharedPreferences = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
-        editor.putString("email", gameViewModel.email.value.toString())
-        editor.putString("password", gameViewModel.password.value.toString())
+        editor.putString("email", loginViewModel.credential.value!!.email)
+        editor.putString("password", loginViewModel.credential.value!!.password)
         editor.apply()
         val action = LoginFragmentDirections.actionLoginFragmentToOnBoardingFragment()
         NavHostFragment.findNavController(this).navigate(action)

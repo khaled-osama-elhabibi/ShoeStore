@@ -10,7 +10,13 @@ class ListingViewModel: ViewModel() {
     private var _shoeList = MutableLiveData<MutableList<Shoe>>()
     val shoeList : LiveData<MutableList<Shoe>>
     get() = _shoeList
+
+    private var _newShoe = MutableLiveData<Shoe>()
+    val newShoe : LiveData<Shoe>
+        get() = _newShoe
+
     init {
+        _newShoe.value = Shoe("",0.0,"","")
         _shoeList.value = mutableListOf(
             Shoe("Original 00",48.00,"Zara","One of the best in the world"),
             Shoe("Original 01",39.00,"Nike","One of the best in the world"),
@@ -20,16 +26,14 @@ class ListingViewModel: ViewModel() {
             Shoe("Original",41.00,"Zara","One of the best in the world"),
         )
     }
-    fun addShoe(shoe: Shoe) {
+    fun addShoe() {
         _shoeList.value?.let {
             val updatedList = it.toMutableList()
-            updatedList.add(shoe)
+            updatedList.add(newShoe.value!!)
             _shoeList.value = updatedList
         }
+        _newShoe.value = Shoe("",0.0,"","")
+
     }
 
-
-    override fun onCleared() {
-        super.onCleared()
-    }
 }
